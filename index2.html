@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ad Beaver - Join us on the Forefront of Innovation</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link rel="manifest" href="img/site.webmanifest">
+  <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#070103">
+</head>
+
+<body>
+  <div class="split left">
+    <div class="container">
+      <nav>
+        <img src="img/logo.png" alt="Ad Beaver" class="logo">
+      </nav>
+      <main>
+        <h1>Let our software create and post 3x quality pieces of content to all you social media platforms every day</p>
+        <p>Are you an entrepreneur struggling to stay consistent on social media?</p>
+        <p>Our software creates engaging posts and automates their posting so you can sit back, relax and watch the followers come in. Spend just 6 mins to setup and walk away while we handle the rest. Our advanced ai learns what content preforms best with your audience and delivers more of it.</p>
+        <p>Enter your phone number below to get early access to our beta and starting enjoying a hassle-free social media experience</p>
+        <form id="subscribe-form" method="POST">
+          <div id="subscribe-message"></div>
+          <input type="text" placeholder="Your phone number" id="phone">
+          <button>
+            <span>Get first access to launch</span>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M17.7334 23.0333C17.4667 22.7667 17.3387 22.4444 17.3494 22.0666C17.3609 21.6889 17.5 21.3667 17.7667 21.1L21.5334 17.3333H6.66671C6.28893 17.3333 5.97204 17.2053 5.71604 16.9493C5.46093 16.6942 5.33337 16.3778 5.33337 16C5.33337 15.6222 5.46093 15.3053 5.71604 15.0493C5.97204 14.7942 6.28893 14.6667 6.66671 14.6667H21.5334L17.7334 10.8666C17.4667 10.6 17.3334 10.2831 17.3334 9.91598C17.3334 9.54976 17.4667 9.23332 17.7334 8.96665C18 8.69998 18.3169 8.56665 18.684 8.56665C19.0503 8.56665 19.3667 8.69998 19.6334 8.96665L25.7334 15.0667C25.8667 15.2 25.9614 15.3444 26.0174 15.5C26.0725 15.6555 26.1 15.8222 26.1 16C26.1 16.1778 26.0725 16.3444 26.0174 16.5C25.9614 16.6555 25.8667 16.8 25.7334 16.9333L19.6 23.0666C19.3556 23.3111 19.0503 23.4333 18.684 23.4333C18.3169 23.4333 18 23.3 17.7334 23.0333Z"
+                fill="white" />
+            </svg>
+          </button>
+        </form>
+      </main>
+    </div>
+  </div>
+  <div class="split right">
+    <div class="top3">
+      <img src="img/Frame 1000007822.png" alt="">
+      <img src="img/Frame 1000007823.png" alt="">
+      <img src="img/Frame 1000007824.png" alt="">
+    </div>
+    <div class="bottom3">
+      <img src="img/Frame 1000007825.png" alt="">
+      <img src="img/Frame 1000007826.png" alt="">
+      <img src="img/Frame 1000007827.png" alt="">
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+      $("#subscribe-form").submit(function (e) {
+        e.preventDefault();
+        var phone = $("#phone").val();
+        $.ajax({
+          type: "POST",
+          url: "contacts.php",
+          data: { phone: phone },
+          success: function (res) {
+            const response = JSON.parse(res);
+            $("#subscribe-message").addClass(`alert ${response['status'] === 'success' ? 'success' : 'danger'}`);
+            $("#subscribe-message").html(response['message']);
+            if (response.status === 'success') {
+              $("#submit-btn span").html('Success');
+              $("#submit-btn svg").html('<path d="M13.3333 18.1334L21.2 10.2667C21.4444 10.0222 21.7555 9.90002 22.1333 9.90002C22.5111 9.90002 22.8222 10.0222 23.0666 10.2667C23.3111 10.5111 23.4333 10.8222 23.4333 11.2C23.4333 11.5778 23.3111 11.8889 23.0666 12.1334L14.2667 20.9334C14 21.2 13.6889 21.3334 13.3333 21.3334C12.9778 21.3334 12.6667 21.2 12.4 20.9334L8.93332 17.4667C8.68887 17.2222 8.56665 16.9111 8.56665 16.5334C8.56665 16.1556 8.68887 15.8445 8.93332 15.6C9.17776 15.3556 9.48887 15.2334 9.86665 15.2334C10.2444 15.2334 10.5555 15.3556 10.8 15.6L13.3333 18.1334Z" fill="white"/>');
+            }
+          },
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

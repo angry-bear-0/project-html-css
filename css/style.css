@@ -1,0 +1,31 @@
+* {
+  box-sizing: content-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins";
+  color: white;
+}
+
+@media (min-width: 1000px) {
+  .container {
+    max-width: 850px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1240px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .container {
+    max-width: 1600px;
+  }
+}
